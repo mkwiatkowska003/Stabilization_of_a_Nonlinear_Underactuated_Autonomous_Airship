@@ -10,7 +10,9 @@ STABILIZATION OF A NONLINEAR UNDERACTUATED AUTONOMOUS AIRSHIP-A CONBINED AVERAGI
 
 *Airships are member of the family of under-actuated systems because they have fewer inputs than degrees of freedom
 
+
 DYMAMIC MODEL
+
 *has the particularity that the origin of the body fixed frame is the center of gravity, while in the cited works,
 
 *it is located in the center of volume.
