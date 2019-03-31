@@ -13,17 +13,13 @@
 
 DYMAMIC MODEL
 
-*has the particularity that the origin of the body fixed frame is the center of gravity, while in the cited works,
-
-*it is located in the center of volume.
+*Has the particularity that the origin of the body fixed frame is the center of gravity, while in the cited works, it is located in the center of volume.
 
 *An airship is propelled by thrust.
 
-*Inputs: the main and tail thrusters and the tilt angle of the propellers
+*Inputs are the main and tail thrusters and the tilt angle of the propellers.
 
 *The unactated dynamics implies contraints of the accelerations.
 
-*The dynamic positioning control problem consists of finding a feedback control law that asymptotically
-
-*stabilizes both position and orientation to fixed constant values. 
+*The dynamic positioning control problem consists of finding a feedback control law that asymptotically.
 
