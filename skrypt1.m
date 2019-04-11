@@ -1,5 +1,3 @@
-
-
 m = 1;
 X_x = 0;
 Y_y = 0;
@@ -25,4 +23,4 @@ M_ni = [m_11 0 0 0 0 0;...
         0 0 0 0 I_22 0;...
         0 0 0 I_13 0 I_33];
     
-C_ni = C_ni_ni_function(mass_v, inertia_v, ni);    
+C_ni = C_ni_ni_function(mass_v, inertia_v, ni);   
