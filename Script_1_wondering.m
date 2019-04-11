@@ -1,8 +1,6 @@
-% eta_1 - kartezjańska reprezentacja położenia
-% eta_2 - kwaternionowa reprezentacja orientacji odpowiednio przekształcona
-% tj. z odpowienią wagą osi obrotu od kąta obrotu
-
-
+% eta_1 - kartezjan�ska reprezentacja polozenia
+% eta_2 - kwaternionowa reprezentacja orientacji odpowiednio przeksztalcona
+% tj. z odpowienia waga osi obrotu od kata obrotu
 
 syms x y z e_0 e_1 e_2 e_3 
 syms u v w p q r

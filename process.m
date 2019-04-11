@@ -1,18 +1,3 @@
-function dn = process(x, ni)
-
-%
-% Równanie dynamiki procesu
-%
-
-% KINEMATICS
-
-eta = [eta1; eta2]';
-J= 1/2 * [-e1 -e2 -e3; e0 -e3 e2; e3 e0 -e1; -e2 e1 e0];
-
-dn = J(eta(2))* ni;
-
-end
-
 function d = process(ni, tau)
 
 % DYNAMICS
