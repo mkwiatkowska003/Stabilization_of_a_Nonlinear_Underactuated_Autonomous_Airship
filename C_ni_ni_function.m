@@ -1,7 +1,11 @@
 function [ C_ni ] = C_ni_ni_function(mass_v,inertia_v, ni, V )
 
-[u, v, w] = ni(1,1:3);
-[p, q, r] = ni(1,4:6);
+u = ni(1);
+v = ni(2);
+w = ni(3);
+p = ni(4);
+q = ni(5);
+r = ni(6);
 
 m11 = mass_v(1);
 m22 = mass_v(2);
