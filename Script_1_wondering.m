@@ -8,7 +8,6 @@ syms u v w p q r
 eta_1 = [x; y; z]
 eta_2 = [e_0; e_1; e_2; e_3]
 
-
 J = J_eta_2_dependend(eta_2);
 R = R_eta_2_dependend(eta_2);
 
