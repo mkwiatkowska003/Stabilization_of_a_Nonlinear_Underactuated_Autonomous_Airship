@@ -1,4 +1,4 @@
-function [out,debug] = tau(k, eta, ni, Iv, P, Mq, Lp, Zw, B, zb, t, ep, m33, m)
+function [tau] = tau(k, eta, ni, Iv, P, Mq, Lp, Zw, B, zb, t, ep, m33, m)
 g = 9.81;
 
 I11 = Iv(1);
@@ -59,6 +59,7 @@ qd_elem1 = -ke2*e2;
 qd_elem2 = -kx*x;
 qd_elem3 = -ku*u;
 
+
 pd =  pd_elem1 + pd_elem2 + pd_elem3 + pd_elem4;
 wd = wd_elem1 + wd_elem2;
 qd = qd_elem1 + qd_elem2 + qd_elem3;
@@ -68,20 +69,17 @@ tau1_elem2 = 1/P1^3 * (I22*kq*qd);
 tau1_elem3 = 1/P1^3 * (2*B*zb*e2);
 
 tau2_elem1 = 1/(P2*I13) * ((delta*kp + Lp*I33)*p);
-tau2_elem2 = 1/(P2*I13) * (-delta*kp*pd);
+tau2_elem2 = 1/(P2*I13) * (-delta*kp*pd)
 tau2_elem3 = 1/(P2*I13) * (- 2*B*zb*e1*I33);
 
-tau3_elem1 = -(m33*kw + Zw)*w;
-tau3_elem2 = m33*kw*wd;
-tau3_elem3 = (B - m*g);
+tau2_elem1 = -(m33*kw + Zw)*w;
+tau2_elem2 = 1/(P2*I13) * (-delta*kp*pd)
+tau2_elem3 = 1/(P2*I13) * (- 2*B*zb*e1*I33);
 
 tau1 = tau1_elem1 + tau1_elem2 + tau1_elem3;
 tau2 = tau2_elem1 + tau2_elem2 + tau2_elem3;
-tau3 = tau3_elem1 + tau3_elem2 + tau3_elem3;
+tau3 = tau2_elem1 + m33*kw*wd + (B - m*g);
 
-out = [tau1; tau2; tau3];
-debug = [pd_elem1; pd_elem2; pd_elem3; pd_elem4; wd_elem1; wd_elem2; qd_elem1;
-    qd_elem2; qd_elem3; tau1_elem1; tau1_elem2; tau1_elem3; tau2_elem1; tau2_elem2; tau2_elem3;
-    tau3_elem1; tau3_elem2; tau3_elem3];
+tau = [tau1; tau2; tau3];
 end
 

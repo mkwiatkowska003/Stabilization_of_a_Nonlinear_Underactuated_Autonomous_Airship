@@ -46,12 +46,12 @@ M_ni = [m_11 0 0 0 0 0;...
     0 0 0 0 I_22 0;...
     0 0 0 I_13 0 I_33];
 
-Xu = 10;
-Yv = 20;
-Zw = 30;
-Lp = 100;
-Mq = 200;
-Nr = 300;
+Xu = 1;
+Yv = 2;
+Zw = 3;
+Lp = 1;
+Mq = 2;
+Nr = 3;
 
 D_v = diag([-Xu -Yv -Zw -Lp -Mq -Nr]);
 param = [Xu Yv Z_z];
@@ -60,7 +60,7 @@ C_ = matlabFunction(C_ni(mass_v, inertia_v, ni,param));
 J_ = matlabFunction([R(eta_2) zeros(3,3);...
     zeros(4,3) J(eta_2)])
 B_ = B_r(P);
-B = mass*g*0.99;
+B = mass*g*1;
 zb = 0.1;
 g_ = matlabFunction(g_ni(eta_2,mass,B,zb,g))
 
@@ -69,9 +69,9 @@ kx = 2;     k(1) = kx;
 ky = 0.4;   k(2) = ky;
 kz = 0.8495;   k(3) = kz;
 
-ke1 = 0.1; k(4) = ke1;
+ke1 = 0.05; k(4) = ke1;
 ke2 = 1.24; k(5) = ke2;
-ke3 = 0.7;  k(6) = ke3;
+ke3 = 0.2;  k(6) = ke3;
 
 ku = 10;     k(7) = ku;
 kv = 10;   k(8) = kv;
@@ -92,7 +92,6 @@ t_history = []
 ni_history = []
 eta_history = []
 tau_history = []
-debug_history = []
 
 
 
@@ -101,12 +100,10 @@ while(t < tend)
     ni_sm_args = num2cell(ni(1:5));
     eta2_args = num2cell(eta(4:7,1));
     
-    [tauv,debug] = tau(k,eta,ni,inertia_v,P,Mq,Lp,Zw,B,zb,t,epsilon,m_33,mass);
-    
     stage1 = C_(ni_args{:})*ni;
     stage2 = D_v*ni;
     stage3 = g_(eta2_args{:});
-    stage4 = tauv;
+    stage4 = tau(k,eta,ni,inertia_v,P,Mq,Lp,Zw,B,zb,t,epsilon,m_33,mass);
     stage5 = inv(M_ni);
     
     ni_n = (stage5*(-stage1 - stage2 - stage3 + B_*stage4))*tn + ni;
@@ -116,7 +113,6 @@ while(t < tend)
     ni_history = [ni_history ni];
     eta_history = [eta_history eta];
     tau_history = [tau_history stage4];
-    debug_history = [debug_history debug];
     
     ni = ni_n;
     eta = eta_n;
@@ -127,46 +123,14 @@ while(t < tend)
         plot(t_history,eta_history(1:3,:))
         legend('x','y','z')
         figure(2)
-        plot(t_history,eta_history(4:7,:))
-        legend('e0','e1','e2','e3')
+        plot(t_history,eta_history(5:7,:))
+        legend('e1','e2','e3')
         figure(3)
         plot(t_history,ni_history(1:3,:))
         legend('u','v','w')
         figure(4)
-        plot(t_history,ni_history(4:6,:))
-        legend('p','q','r')
-        figure(5)
         plot(t_history,tau_history(1:3,:))
         legend('tau1','tau2','tau3')
-        
-        figure(6)
-        subplot(3,1,2);
-        plot(t_history,debug_history(1:4,:))
-        title('pd ingredients')
-        legend('kr elem','ke3 elem','ke1 elem','kv,ky elem');
-        subplot(3,1,3);
-        plot(t_history,debug_history(5:6,:))
-        title('wd elem')
-        legend('kz elem','vy');
-        subplot(3,1,1);
-        plot(t_history,debug_history(7:9,:))
-        title('qd ingredients')
-        legend('ke2 elem','kx elem','ku elem');
-        
-        figure(7)
-        subplot(3,1,1);
-        plot(t_history,debug_history(10:12,:))
-        title('tau1 ingredients')
-        legend('kq elem','kq,qd elem','Bzb');
-        subplot(3,1,2);
-        plot(t_history,debug_history(13:15,:))
-        title('tau2 ingredients')
-        legend('kp elem','kp,pd elem','Bzbe1');
-        subplot(3,1,3);
-        plot(t_history,debug_history(16:18,:))
-        title('tau3 ingredients')
-        legend('kw elem','kw,wd elem','Bmg');
-        
         break;
     end
     
