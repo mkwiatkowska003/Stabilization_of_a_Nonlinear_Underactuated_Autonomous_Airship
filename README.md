@@ -2,15 +2,15 @@
 The main goal of the project was to create the control system for stabilizing the position and rotation of the underactuated autonomous airship. The algorithm is based on the averaging and backstepping approach. 
 
 # Getting Started
-To find more information about averaging and backstepping method, read the article named as "temat8.pdf" (it is located in the main folder). The following algorithm is based on the methods presented in this article, but also introduce specified values of all the parameters used in control design. 
+To find more information about averaging and backstepping method, read the article named as "temat8.pdf" (located in the main folder). The following algorithm is based on the methods presented in this article, but also introduces specified values of all parameters used in control design. 
 
 # Build and Test
-To see the simulation results, run the <b>'Stabilization.m'</b> script. After that, 5 diagrams should appear on the screen - these diagrams describes the following dependencies: 
-* spacecraft's position in time
-* linear velocity of the spacecraft in time
-* angular velocity of the spacecraft in time
-* tau parameters in time
-* tau ingredients (used for debugging and testing)
+To see the simulation results, run the <b>'Stabilization.m'</b> script with Matlab. Then 5 diagrams should appear on the screen, describing the following dependencies: 
+1. spacecraft's position in time
+2. linear velocity of the spacecraft in time
+3. angular velocity of the spacecraft in time
+4. tau parameters in time
+5. tau ingredients (used for debugging and testing)
 
 ## DYNAMIC MODEL OF THE AIRSHIP
 
