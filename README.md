@@ -12,7 +12,7 @@ To see the simulation results, run the <b>'Stabilization.m'</b> script with Matl
 4. tau parameters in time
 5. tau ingredients (used for debugging and testing)
 
-## DYNAMIC MODEL OF THE AIRSHIP
+## AIRSHIP'S DYMANICS MODEL
 
 Airships are member of the family of under-actuated systems because they have fewer inputs than degrees of freedom. In this case, the dynamic modelling involves 6 equations with only 3 inputs. Because the airship can't be stabilized to a point using continous pure-state feedback law, the stabilization problem has been solved with an explicit homogeneous time-varying control law, based on an avaranging and backstepping approach.
 
