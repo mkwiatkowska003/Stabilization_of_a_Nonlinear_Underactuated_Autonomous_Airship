@@ -2,7 +2,7 @@
 The main goal of the project was to create the control system for stabilizing the position and rotation of the underactuated autonomous airship. The algorithm is based on the averaging and backstepping approach. 
 
 # Getting Started
-To find more information about averaging and backstepping method, read the article named as "temat8.pdf" (located in the main folder). The following algorithm is based on the methods presented in this article, but also introduces specified values of all parameters used in control design. 
+To find more information about averaging and backstepping method, read the article named as "article.pdf" (located in the main folder). The following algorithm is based on the methods presented in this article, but also introduces specified values of all parameters used in control design. 
 
 # Build and Test
 To see the simulation results, run the <b>'Stabilization.m'</b> script with Matlab. Then 5 diagrams should appear on the screen, describing the following dependencies: 
